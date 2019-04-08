@@ -10,5 +10,6 @@
         
 1.2
     A basic SCAPP-Spec launcher must conduct the following tasks
-       a) Parse and execute the pre-launch script
-       b) Parse any config files detailed by the script and pass those to the matching executable(s) 
+       a) Extract the file, and create a working directory, if required
+       b) Parse and execute the pre-launch script
+       c) Parse any config files detailed by the script and pass those to the matching executable(s)

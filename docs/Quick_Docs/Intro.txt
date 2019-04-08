@@ -1,1 +1,14 @@
-﻿
+﻿Welcome to SCAPP, a standard for self-contained applications, this doc (should), describe the standard
+
+1.1
+    A basic SCAPP-Spec file shoudld be a zip-compressed folder containing
+        a) A pre-launch script file, detailing the executables to be launched, and the various config files to be parsed
+           and fed to the program.
+        b) An executable (duh)
+        c) A config file, if required
+        d) Any libraries required by your program, unless otherwise provided by OS or Runtime Environment
+        
+1.2
+    A basic SCAPP-Spec launcher must conduct the following tasks
+       a) Parse and execute the pre-launch script
+       b) Parse any config files detailed by the script and pass those to the matching executable(s) 

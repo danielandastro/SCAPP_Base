@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO.Compression;
+using System.IO;
 
 namespace SCAPP_Launcher_Lib
 {
@@ -19,9 +20,18 @@ namespace SCAPP_Launcher_Lib
         {
             ZipFile.ExtractToDirectory(filePath, dirPath);
         }
-        public void DecodeScript(string scriptPath)
+        public String[] DecodeScriptExecs(string scriptPath)
         {
-
+            var dataToReturn = new string[1024];
+            var count = -1;
+            var lines = File.ReadAllLines(scriptPath);
+                foreach (string lineToDecode in lines)
+            {
+                if (lineToDecode.Contains("exec="))
+                {lineToDecode.Replace("exec=", ""); count++; }
+                dataToReturn[count] = lineToDecode;
+            }
+            return dataToReturn;
         }
     }
 }

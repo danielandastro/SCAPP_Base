@@ -7,4 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Base_Data_Classes\Base_Data_Classes.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+  </ItemGroup>
 </Project>

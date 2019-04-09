@@ -3,13 +3,15 @@ using Base_Data_Classes;
 using System.IO;
 using System.IO.Compression;
 using System.Collections.Generic;
+using Newtonsoft;
 namespace SCAPP_Client_Lib
 {
     public class High
     {
-        public List<Base_Data_Classes.ConfigFileItem> DecodeConfigFile(string filePath)
+        Low low = new Low();
+        public List<ConfigFileItem> DecodeConfigFile(string filePath)
         {
-            
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<List<ConfigFileItem>>(low.ReadConfigFile(filePath));
         }
 
     }

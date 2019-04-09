@@ -21,7 +21,7 @@ namespace SCAPP_Launcher_Lib
             foreach(var dir in list)
             {
                 dataToReturn[count] = dir.Replace("-workdir", "");
-                count++
+                count++;
             }
             return dataToReturn;
         }

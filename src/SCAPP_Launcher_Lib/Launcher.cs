@@ -13,6 +13,18 @@ namespace SCAPP_Launcher_Lib
             var dirName = file + "-workdir";//name of workdir
             low.ExtractToDir(file, dirName);//call method from class Low
         }
+        public string[] ListCachedPrograms()
+        {
+            var dataToReturn = new string[1024];
+            count = 0;
+            var list = low.ListWorkingFolders();
+            foreach(var dir in list)
+            {
+                dataToReturn[count] = dir.Replace("-workdir", "");
+                count++
+            }
+            return dataToReturn;
+        }
         public void ExecAndCache(string FilePath)
         {
             ExtractToWorkFolder(FilePath);
@@ -48,6 +60,19 @@ namespace SCAPP_Launcher_Lib
     }
     public class Low //bare metal, use only if required, used by High
     {
+        public string[] ListWorkingFolders()
+        {
+            var dataToReturn = new string[1024];
+            var count = -1;
+            string[] subdirectoryEntries = Directory.GetDirectories(Directory.GetCurrentDirectory());
+            foreach(string subdir in subdirectoryEntries)
+            {
+                if subdir.Contains("-workdir"){
+                    count++; //adds one to count
+                    dataToReturn[count] = lineToDecode;
+                }
+            }
+        }
         public void ExecuteFile(string filePath)//reads filepath and executes, a wrapper for Process.Start() 
         {
             Process.Start(filePath);

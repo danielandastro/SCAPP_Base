@@ -16,12 +16,12 @@ namespace SCAPP_Launcher_Lib
         public string[] ListCachedPrograms()
         {
             var dataToReturn = new string[1024];
-            count = 0;
+            var count = 0;
             var list = low.ListWorkingFolders();
             foreach(var dir in list)
             {
                 dataToReturn[count] = dir.Replace("-workdir", "");
-                count++
+                count++;
             }
             return dataToReturn;
         }
@@ -67,11 +67,12 @@ namespace SCAPP_Launcher_Lib
             string[] subdirectoryEntries = Directory.GetDirectories(Directory.GetCurrentDirectory());
             foreach(string subdir in subdirectoryEntries)
             {
-                if subdir.Contains("-workdir"){
+                if (subdir.Contains("-workdir")){
                     count++; //adds one to count
-                    dataToReturn[count] = lineToDecode;
+                    dataToReturn[count] = subdir;
                 }
             }
+            return dataToReturn;
         }
         public void ExecuteFile(string filePath)//reads filepath and executes, a wrapper for Process.Start() 
         {

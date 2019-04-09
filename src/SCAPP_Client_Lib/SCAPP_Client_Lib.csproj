@@ -4,4 +4,7 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Base_Data_Classes\Base_Data_Classes.csproj" />
+  </ItemGroup>
 </Project>

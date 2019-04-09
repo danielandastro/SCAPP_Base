@@ -9,7 +9,7 @@ namespace Base_Data_Classes
         public string description;
         public string value;
         public bool flag;
-
-
+        public bool enforced;
+        public bool required;
     }
 }

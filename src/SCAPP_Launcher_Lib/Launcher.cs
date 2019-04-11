@@ -1,4 +1,4 @@
-﻿using System;//YOu should know
+﻿using System;//You should know
 using System.IO.Compression;//for extracting SCAPP files
 using System.IO;//for reading files to memory
 using System.Diagnostics;//for launching stuff

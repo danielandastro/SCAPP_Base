@@ -1,4 +1,4 @@
-﻿using System;//YOu should know
+﻿using System;//You should know
 using System.IO.Compression;//for extracting SCAPP files
 using System.IO;//for reading files to memory
 using System.Diagnostics;//for launching stuff
@@ -83,7 +83,7 @@ namespace SCAPP_Launcher_Lib
         {
             ZipFile.ExtractToDirectory(filePath, dirPath);//Extracts file
         }
-        public String[] DecodeScriptExecs(string scriptPath)//returns executables to be run
+        public string[] DecodeScriptExecs(string scriptPath)//returns executables to be run
         {
             var dataToReturn = new string[1024];//stores data that must be returned
             var count = -1;//count, -1 cause the first exec will add to it, causing it to increase to 0

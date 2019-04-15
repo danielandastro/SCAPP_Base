@@ -6,12 +6,11 @@ using System.Collections.Generic;
 using Newtonsoft;
 namespace SCAPP_Client_Lib
 {
-    public class High
+    public class High:Low
     {
-        Low low = new Low();
         public List<ConfigFileItem> DecodeConfigFile(string filePath)
         {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<List<ConfigFileItem>>(low.ReadConfigFile(filePath));
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<List<ConfigFileItem>>(ReadConfigFile(filePath));
         }
 
     }

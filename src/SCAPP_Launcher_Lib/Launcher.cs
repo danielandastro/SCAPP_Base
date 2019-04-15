@@ -4,21 +4,20 @@ using System.IO;//for reading files to memory
 using System.Diagnostics;//for launching stuff
 namespace SCAPP_Launcher_Lib
 {
-    public class High //High level ops, facade class for easy normal usage, uses Low class
+    public class High : Low //High level ops, facade class for easy normal usage, inherits Class 'Low'
     {
-        private Low low = new Low();//instance of class Low
         public void ExtractToWorkFolder(string file)//auto extracts a file to a working folder
         {
-           
+
             var dirName = file + "-workdir";//name of workdir
-            low.ExtractToDir(file, dirName);//call method from class Low
+            ExtractToDir(file, dirName);//call method from class Low
         }
         public string[] ListCachedPrograms()
         {
             var dataToReturn = new string[1024];
             var count = 0;
-            var list = low.ListWorkingFolders();
-            foreach(var dir in list)
+            var list = ListWorkingFolders();
+            foreach (var dir in list)
             {
                 dataToReturn[count] = dir.Replace("-workdir", "");
                 count++;
@@ -33,11 +32,11 @@ namespace SCAPP_Launcher_Lib
             var scriptPath = dir + "/default.scas";
 
             var execFiles =
-            low.DecodeScriptExecs(scriptPath);
+            DecodeScriptExecs(scriptPath);
 
-            foreach(var executable in execFiles)
+            foreach (var executable in execFiles)
             {
-                low.ExecuteFile(executable);
+                ExecuteFile(executable);
             }
         }
         public void ExecAndClear(string filePath)
@@ -48,11 +47,11 @@ namespace SCAPP_Launcher_Lib
             var scriptPath = dir + "/default.scas";
 
             var execFiles =
-            low.DecodeScriptExecs(scriptPath);
+            DecodeScriptExecs(scriptPath);
 
             foreach (var executable in execFiles)
             {
-                low.ExecuteFile(executable);
+                ExecuteFile(executable);
             }
             System.Threading.Thread.Sleep(10000);
             Directory.Delete(dir, true);
@@ -65,9 +64,10 @@ namespace SCAPP_Launcher_Lib
             var dataToReturn = new string[1024];
             var count = -1;
             string[] subdirectoryEntries = Directory.GetDirectories(Directory.GetCurrentDirectory());
-            foreach(string subdir in subdirectoryEntries)
+            foreach (string subdir in subdirectoryEntries)
             {
-                if (subdir.Contains("-workdir")){
+                if (subdir.Contains("-workdir"))
+                {
                     count++; //adds one to count
                     dataToReturn[count] = subdir;
                 }
@@ -83,7 +83,7 @@ namespace SCAPP_Launcher_Lib
         {
             ZipFile.ExtractToDirectory(filePath, dirPath);//Extracts file
         }
-        public string[] DecodeScriptExecs(string scriptPath)//returns executables to be run
+        public String[] DecodeScriptExecs(string scriptPath)//returns executables to be run
         {
             var dataToReturn = new string[1024];//stores data that must be returned
             var count = -1;//count, -1 cause the first exec will add to it, causing it to increase to 0

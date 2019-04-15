@@ -22,7 +22,8 @@ namespace SCAPP_Client_Lib
         }
         public void WriteConfigFile()
         {
-
+            throw new NotImplementedException;
+            //TODO implement config writing
         }
     }
 }
